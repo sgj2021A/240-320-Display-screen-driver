@@ -9,5 +9,4 @@
 #define LCD_WIDTH       240
 #define LCD_HEIGHT      320
 
-#define cs 1
 #endif
