@@ -37,4 +37,5 @@ STATUS LCD_Change(uint16_t x, uint16_t y, COLORREF color);
 STATUS LCD_DrawLine(vector2 p1, vector2 p2, COLORREF color);
 STATUS LCD_DrawCircle(vector2 O, uint16_t R, COLOR16 color);
 STATUS LCD_DrawFilledCircle(vector2 O, uint16_t R, COLORREF color);
+
 #endif
