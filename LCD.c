@@ -6,10 +6,13 @@
 // 库包含
 #include "LCD.h"
 
+// 私有函数
+
+
 /*
  * 窗口初始化函数
  */
-int LDC_Init() {
+int LCD_Init() {
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	const wchar_t CLASS_NAME[] = L"LDC_Display";
@@ -273,6 +276,40 @@ STATUS LCD_DrawFilledCircle(vector2 O, uint16_t R, COLORREF color) {
 		for (int x = x1; x <= x2; x++) {
 			FrameBuffer[py * LCD_WIDTH + x] = color;
 		}
+	}
+
+	return SET;
+}
+
+/* 
+ * 绘制三角形
+ * a,b,c : vector2 三角形的三个定点
+ * color : 三角形的颜色
+ * 返回 : STATUS
+ */
+STATUS LCD_DrawTriangle(vector2 a, vector2 b, vector2 c, COLORREF color) {
+	if (a.x < 0 || a.x >= LCD_WIDTH || a.y < 0 || a.y >= LCD_HEIGHT
+		|| b.x < 0 || b.x >= LCD_WIDTH || b.y < 0 || b.y >= LCD_HEIGHT
+		|| c.x < 0 || c.x >= LCD_WIDTH || c.y < 0 || c.y >= LCD_HEIGHT) {
+		return ENSET;
+	}
+	LCD_DrawLine(a, b, color);
+	LCD_DrawLine(a, c, color);
+	LCD_DrawLine(b, c, color);
+	return SET;
+}
+
+/*
+ * 绘制填充三角形
+ * a,b,c : vector2 三角形的三个定点
+ * color : 三角形的颜色
+ * 返回 : STATUS
+ */
+STATUS LCD_DrawFullTriangle(vector2 a, vector2 b, vector2 c, COLORREF color) {
+	if (a.x < 0 || a.x >= LCD_WIDTH || a.y < 0 || a.y >= LCD_HEIGHT
+		|| b.x < 0 || b.x >= LCD_WIDTH || b.y < 0 || b.y >= LCD_HEIGHT
+		|| c.x < 0 || c.x >= LCD_WIDTH || c.y < 0 || c.y >= LCD_HEIGHT) {
+		return ENSET;
 	}
 
 	return SET;

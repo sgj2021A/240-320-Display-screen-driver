@@ -14,7 +14,10 @@
 #include <math.h>
 
 // 包含宏
+#define SWAP(a, b) { int temp = a; a = b; b = temp; }
 #define PIXEL_COUNT (LCD_WIDTH * LCD_HEIGHT)
+
+// 包含变量
 COLORREF FrameBuffer[PIXEL_COUNT];
 
 // 包含结构体
@@ -30,12 +33,13 @@ typedef enum STATUS{
 
 // 包含函数
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int LDC_Init();
+int LCD_Init();
 void LCD_Clear(COLORREF color);
 void LCD_Update(HDC hdc);
 STATUS LCD_Change(uint16_t x, uint16_t y, COLORREF color);
 STATUS LCD_DrawLine(vector2 p1, vector2 p2, COLORREF color);
 STATUS LCD_DrawCircle(vector2 O, uint16_t R, COLOR16 color);
 STATUS LCD_DrawFilledCircle(vector2 O, uint16_t R, COLORREF color);
-
+STATUS LCD_DrawTriangle(vector2 a, vector2 b, vector2 c, COLORREF color);
+STATUS LCD_DrawFullTriangle(vector2 a, vector2 b, vector2 c, COLORREF color);
 #endif
